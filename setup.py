@@ -10,7 +10,7 @@ setup(
     name='ventraip-vip-client',
     description='Client to connect to and manage DNS entries registered with VentraIP',
     long_description=read('README.rst'),
-    version='0.0.2',
+    version='0.1.1',
     url='https://github.com/cmbrad/ventraip-vip-client',
     author='Christopher Bradley',
     author_email='chris.bradley@cy.id.au',
@@ -21,5 +21,5 @@ setup(
         'Intended Audience :: Developers'
     ],
     packages=['ventraip'],
-    install_requires=['requests>=2.18,<2.19']
+    install_requires=['requests>=2.18,<2.19', 'beautifulsoup4>=4.6,<4.7']
 )

@@ -68,7 +68,7 @@ class VipClient(object):
             record_id = row.find('form').find('input').get('value')
             cols_text = [self._clean(ele.text) for ele in row.find_all('td')]
 
-            records.append(DnsRecord(internal_id=record_id, hostname=cols_text[0], ip_address=cols_text[2], record_type=cols_text[3], ttl=cols_text[4]))
+            records.append(DnsRecord(internal_id=record_id, hostname=cols_text[0], destination=cols_text[1], record_type=cols_text[2], ttl=cols_text[3]))
 
         return records
 

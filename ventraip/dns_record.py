@@ -1,8 +1,8 @@
 class DnsRecord(object):
-    def __init__(self, internal_id, hostname, ip_address, record_type, ttl):
+    def __init__(self, internal_id, hostname, destination, record_type, ttl):
         self.internal_id = internal_id
         self.hostname = hostname
-        self.ip_address = ip_address
+        self.destination = destination
         self.record_type = record_type
         self.ttl = ttl
 
