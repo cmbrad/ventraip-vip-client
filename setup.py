@@ -1,10 +1,17 @@
 from setuptools import setup, find_packages
 
 
+def read(filename):
+    with open(filename, 'r') as f:
+        return f.read()
+
+
 setup(
     name='ventraip-vip-client',
     description='Client to connect to and manage DNS entries registered with VentraIP',
-    version='0.2.0',
+    long_description=read('README.md'),
+    long_description_content_type='text/markdown',
+    version='0.2.3',
     url='https://github.com/cmbrad/ventraip-vip-client',
     packages=find_packages('src'),
     package_dir={'': 'src'},

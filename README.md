@@ -51,6 +51,14 @@ for domain in domains:
       vip_client.remove_dns_record(domain_id=domain.internal_id, dns_record_id=dns_record.internal_id)
 ```
 
+## Deploying
+
+```bash
+rm -Recurse -Force dist
+python setup.py sdist bdist_wheel
+twine upload dist/*
+```
+
 ## Disclaimer
 
 I have no relation to the VentraIP company and any use of this software is not endorsed by them in any way.
