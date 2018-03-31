@@ -36,11 +36,19 @@ def list(vip_client: VipClient):
 @click.argument('destination', required=True)
 @click.argument('ttl', required=True)
 @click.argument('record-type', required=True)
+@click.option('--delete-existing/--no-delete-existing', default=True)
 @click.pass_obj
-def add(vip_client: VipClient, hostname, domain_name, destination, ttl, record_type):
+def add(vip_client: VipClient, hostname, domain_name, destination, ttl, record_type, delete_existing):
     domain = vip_client.domain(domain_name=domain_name)
+    dns_record = vip_client.dns_record(hostname, domain_name, record_type)
+
+    if dns_record and delete_existing:
+        print('Found existing record. Deleting old record to allow for update')
+        vip_client.remove_dns_record(dns_record.domain.internal_id, dns_record.internal_id)
 
     vip_client.add_dns_record(domain.internal_id, hostname, destination, ttl, record_type)
+
+    print(f'Set {hostname}.{domain_name} to point to {destination}')
 
 
 @cli.command(name='rm')
@@ -52,6 +60,8 @@ def remove(vip_client: VipClient, hostname, domain_name, record_type):
     dns_record = vip_client.dns_record(hostname=hostname, domain_name=domain_name, record_type=record_type)
 
     vip_client.remove_dns_record(dns_record.domain.internal_id, dns_record.internal_id)
+
+    print(f'Deleted {hostname}.{domain_name}')
 
 
 def main():

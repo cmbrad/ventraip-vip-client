@@ -11,7 +11,7 @@ setup(
     description='Client to connect to and manage DNS entries registered with VentraIP',
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
-    version='0.2.3',
+    version='0.4.0',
     url='https://github.com/cmbrad/ventraip-vip-client',
     packages=find_packages('src'),
     package_dir={'': 'src'},
